@@ -25,8 +25,8 @@ class Alipay extends Controller
             'sign_type'=>$config['sign_type'],
             'timestamp'=>$timestamp,
             'version'=>'1.0',
-            'notify_url'=>'http://1905sunhao.comcto.com/alipay/notify',
-            'return_url '=>'http://1905sunhao.comcto.com/alipay/return',
+            'notify_url'=>'http://sh.lizhijun.fun/alipay/notify',
+            'return_url '=>'http://sh.lizhijun.fun/alipay/return',
             'biz_content'=>json_encode($biz_content),
         ];
 
