@@ -18,4 +18,5 @@ Route::get('/info',function(){
 	phpinfo();
 });
 Route::get('/aliapi','Alipay@aliapi');
-Route::get('/return_url','Alipay@return_url');
+Route::get('/alipay/return','Alipay@return_url');
+Route::get('/alipay/notify','Alipay@notify_url');
