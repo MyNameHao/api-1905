@@ -20,3 +20,6 @@ Route::get('/info',function(){
 Route::get('/aliapi','Alipay@aliapi');
 Route::get('/alipay/return','Alipay@return_url');
 Route::post('/alipay/notify','Alipay@notify_url');
+Route::post ('/test/reg','Test\UserController@reg');
+Route::post ('/test/login','Test\UserController@login');
+Route::get ('/test/index','Test\UserController@index')->middleware('RefreshRedis');
