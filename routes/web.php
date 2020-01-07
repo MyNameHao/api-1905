@@ -23,3 +23,5 @@ Route::post('/alipay/notify','Alipay@notify_url');
 Route::post ('/test/reg','Test\UserController@reg');
 Route::post ('/test/login','Test\UserController@login');
 Route::get ('/test/index','Test\UserController@index')->middleware('RefreshRedis');
+Route::get('/test/ascii','Test\TestController@ascii');
+Route::get('/test/unascii','Test\TestController@unascii');
