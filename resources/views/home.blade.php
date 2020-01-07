@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in!<br/>
+                        <a href="{{url('/test/addpub')}}">添加秘钥</a> <a href="/test/decode">进行解密</a>
                 </div>
             </div>
         </div>
