@@ -25,3 +25,14 @@ Route::post ('/test/login','Test\UserController@login');
 Route::get ('/test/index','Test\UserController@index')->middleware('RefreshRedis');
 Route::get('/test/ascii','Test\TestController@ascii');
 Route::get('/test/unascii','Test\TestController@unascii');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
