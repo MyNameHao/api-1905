@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Test;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\PubKey;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
@@ -33,6 +35,33 @@ class TestController extends Controller
             echo $chr;
 //            echo $ord;echo '<br>';
         }
+
+
+    }
+    public function addsign(){
+        return view('test.addsign');
+    }
+    public function verify(){
+        $sign=request()->base;
+        $data=request()->except('_token','base');
+//        dump($data);
+        ksort($data);
+        $str='';
+        foreach($data as $k=>$v){
+            $str .=$k.'='.$v.'&';
+        }
+        $str=rtrim($str,'&');
+//        echo $str;
+        $id = Auth::user()->id;
+        $pub_key=PubKey::where('p_id',$id)->value('pub_key');
+        $int=openssl_verify($str,base64_decode($sign),$pub_key,OPENSSL_ALGO_SHA256);
+        if($int){
+            echo '验证成功';
+        }else{
+            echo '签名有误';
+        }
+
+
 
 
     }

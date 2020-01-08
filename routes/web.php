@@ -36,4 +36,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//验证签名
+Route::get('/test/addsign','Test\TestController@addsign');
+Route::post('/test/verify','Test\TestController@verify');
+
 
