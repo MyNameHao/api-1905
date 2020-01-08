@@ -15,7 +15,7 @@
                     @endif
 
                     You are logged in!<br/>
-                        <a href="{{url('/test/addpub')}}">添加秘钥</a> <a href="/test/decode">进行解密</a>
+                        <a href="{{url('/test/addpub')}}">添加秘钥</a> <a href="/test/decode">进行解密</a> <a href="/test/addsign">签名验证</a>
                 </div>
             </div>
         </div>
