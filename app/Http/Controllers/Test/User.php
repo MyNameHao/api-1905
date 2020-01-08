@@ -26,6 +26,7 @@ class User extends Controller
             $data['user_id']=$id;
             $id=PubKey::insertGetId($data);
             echo $id;
+        return redirect('/home');
 
 
 
