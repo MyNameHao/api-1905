@@ -41,3 +41,7 @@ Route::get('/test/addsign','Test\TestController@addsign');
 Route::post('/test/verify','Test\TestController@verify');
 
 
+Route::post('/api/user/reg','Api\UserController@reg');
+Route::post('/api/user/login','Api\UserController@login');
+Route::post('/api/user/lists','Api\UserController@lists')->middleware('RefreshRedis');
+

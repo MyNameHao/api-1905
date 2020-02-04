@@ -36,6 +36,7 @@ class UserController extends Controller
     }
     public function login(){
         $data=request()->post();
+        echo 1111;exit;
         $u=UserModel::where('name',$data['name'])->first();
         if($u){
             if(password_verify($data['password'],$u['password'])){
