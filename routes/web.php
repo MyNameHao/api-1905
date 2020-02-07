@@ -49,4 +49,6 @@ Route::post('/api/user/lists','Api\UserController@lists')->middleware('RefreshRe
 //网页防刷
 Route::get('/api/user/fangshua','Api\UserController@fangshua');
 Route::get('/api/user/signature','Api\UserController@signature');
+//postsing
+Route::get('/api/user/postsign','Api\UserController@postsign');
 

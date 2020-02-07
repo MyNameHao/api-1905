@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use GuzzleHttp\Client;
 
 class UserController extends Controller
 {
@@ -75,5 +76,26 @@ class UserController extends Controller
 //        echo $signature;
         $url='http://passport.1905.com/test/verify?val='.$_val.'&signature='.$signature;
         echo file_get_contents($url);
+    }
+    public function postsign(){
+        $key='abc123';
+        $data=[
+            'order_no'=>'123434123',
+            'goods_name'=>'oppor17',
+            'goods_munber'=>'3499',
+            'user'=>'张三'
+        ];
+        $data_json=json_encode($data,JSON_UNESCAPED_UNICODE);
+        $sign=md5($data_json.$key);
+        $url='http://passport.1905.com/test/postsign';
+        $client= new client();
+        $res=$client->request('post',$url,[
+            'form_params'=>[
+                'data'=>$data_json,
+                'sign'=>$sign
+            ]
+        ]);
+        echo $res->getBody();
+
     }
 }
