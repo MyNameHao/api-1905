@@ -98,4 +98,19 @@ class UserController extends Controller
         echo $res->getBody();
 
     }
+    public function sslencr(){
+        $path=storage_path('/key/priv.key');
+        $data=[
+            'order_no'=>'123434123',
+            'goods_name'=>'oppor17',
+            'goods_munber'=>'3499',
+            'user'=>'张三'
+        ];
+        $data_json=json_encode($data,JSON_UNESCAPED_UNICODE);
+        $pkeyid = openssl_pkey_get_private("file://".$path);
+        openssl_sign($data_json, $signature, $pkeyid);
+        $signature=base64_encode($signature);
+        $url='http://passport.1905.com/test/sslencr?sign='.urlencode($signature).'&data='.$data_json;
+         echo file_get_contents($url);
+    }
 }

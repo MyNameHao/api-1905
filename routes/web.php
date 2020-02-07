@@ -51,4 +51,6 @@ Route::get('/api/user/fangshua','Api\UserController@fangshua');
 Route::get('/api/user/signature','Api\UserController@signature');
 //postsing
 Route::get('/api/user/postsign','Api\UserController@postsign');
+//sslencr
+Route::get('/api/user/sslencr','Api\UserController@sslencr');
 
