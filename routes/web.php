@@ -45,3 +45,8 @@ Route::post('/api/user/reg','Api\UserController@reg');
 Route::post('/api/user/login','Api\UserController@login');
 Route::post('/api/user/lists','Api\UserController@lists')->middleware('RefreshRedis');
 
+
+//网页防刷
+Route::get('/api/user/fangshua','Api\UserController@fangshua');
+Route::get('/api/user/signature','Api\UserController@signature');
+
