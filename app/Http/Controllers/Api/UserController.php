@@ -126,4 +126,21 @@ class UserController extends Controller
         $url='http://passport.1905.com/test/sslcbc?base='.urlencode($ciphertext);
         echo file_get_contents($url);
     }
+    public function sslpriv(){
+        //要加密的内容
+        $data='你猜这是啥';
+        //获取storage下面私钥的路径
+        $path=storage_path('/key/priv.key');
+        //根据$path的路径获取私钥的资源
+        $priv=openssl_pkey_get_private('file://'.$path);
+        //根据$priv的私钥进行对$data进行加密
+        openssl_private_encrypt ($data,$crypted,$priv,OPENSSL_PKCS1_PADDING);
+        //使用base64将加密后的数据进行转译
+        $base_crypted=base64_encode($crypted);
+        //将加密后得数据添加到网址中
+        $url='http://passport.1905.com/test/sslpub?data='.urlencode($base_crypted);
+        echo file_get_contents($url);
+
+
+    }
 }

@@ -55,4 +55,6 @@ Route::get('/api/user/postsign','Api\UserController@postsign');
 Route::get('/api/user/sslencr','Api\UserController@sslencr');
 //sslcbc
 Route::get('/api/user/sslcbc','Api\UserController@sslcbc');
+//sslpriv
+Route::get('/api/user/sslpriv','Api\UserController@sslpriv');
 
