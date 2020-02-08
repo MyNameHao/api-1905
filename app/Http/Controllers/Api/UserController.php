@@ -113,4 +113,17 @@ class UserController extends Controller
         $url='http://passport.1905.com/test/sslencr?sign='.urlencode($signature).'&data='.$data_json;
          echo file_get_contents($url);
     }
+    public function sslcbc(){
+        $key='19020208';
+        $data='hello word';
+        $method='AES-256-CBC';
+        $ivlen = openssl_cipher_iv_length($method);
+        $iv = openssl_random_pseudo_bytes($ivlen);
+        $ciphertext = openssl_encrypt($data, $method, $key, $options=OPENSSL_RAW_DATA, $iv);
+        $hmac = hash_hmac('sha256', $ciphertext, $key, $as_binary=true);
+//        echo $hmac;echo '<br>';
+        $ciphertext = base64_encode( $iv.$hmac.$ciphertext );
+        $url='http://passport.1905.com/test/sslcbc?base='.urlencode($ciphertext);
+        echo file_get_contents($url);
+    }
 }
